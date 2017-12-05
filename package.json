@@ -1,0 +1,14 @@
+{
+  "name": "WhatToWeather",
+  "version": "0.1.0",
+  "description": "Web app that tells you what to wear based on the weather",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "connect": "^3.4.0",
+    "express": "*",
+    "path": "*",
+    "serve-static": "^1.10.0"
+  }
+}

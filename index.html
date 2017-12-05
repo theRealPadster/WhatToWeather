@@ -4,6 +4,7 @@
 <head>
     <title>WhatToWeather</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -13,7 +14,9 @@
 
     <button onclick="getLocation()">Try It</button>
 
-    <p id="demo"></p>
+    <h3 id="city"></h3>
+    <h3 id="temperature"></h3>
+    <h3 id="weather"></h3>
 
     <script>
     var x = document.getElementById("demo");
@@ -27,9 +30,18 @@
     }
 
     function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude +
-        "<br>Longitude: " + position.coords.longitude;
+
+        $.ajax({
+            url: "http://api.openweathermap.org/data/2.5/weather?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&appid=8e62e050c29fc061b770beda0908a51c",
+            success: function(data) {
+                $("#city").text(data.name);
+                $("#temperature").text((data.main.temp - 273) + " degrees C");
+                $("#weather").text(data.weather[0].main);
+            }
+        })
     }
+
+
     </script>
 
 

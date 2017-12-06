@@ -10,22 +10,21 @@
 <body>
     <h1>What to Weather</h1>
 
-    <p>Click the button to get your coordinates.</p>
-
-    <button onclick="getLocation()">Try It</button>
-
     <h3 id="city"></h3>
     <h3 id="temperature"></h3>
     <h3 id="weather"></h3>
 
     <script>
-    var x = document.getElementById("demo");
+
+    $(document).ready(function(){
+        getLocation();
+    });
 
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
+            alert("Geolocation is not supported by this browser.");
         }
     }
 
@@ -35,7 +34,7 @@
             url: "http://api.openweathermap.org/data/2.5/weather?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&appid=8e62e050c29fc061b770beda0908a51c",
             success: function(data) {
                 $("#city").text(data.name);
-                $("#temperature").text((data.main.temp - 273) + " degrees C");
+                $("#temperature").text(Math.round(data.main.temp - 273) + " degrees C");
                 $("#weather").text(data.weather[0].main);
             }
         })

@@ -5,43 +5,42 @@
     <title>WhatToWeather</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="weather.js"></script>
+    <script src="scripts.js"></script>
+    <!-- TOODO - add loading/spash screen -->
 </head>
 
 <body>
     <h1>What to Weather</h1>
 
-    <h3 id="city"></h3>
-    <h3 id="temperature"></h3>
-    <h3 id="weather"></h3>
+    <section id="welcomeSection" class="col-md-10">
+        <h2>Welcome, <span id="nameSpan">friend</span> :)</h2>
+    </section>
 
-    <script>
+    <section id="preferenceSection" class="hidden col-md-10">
 
-    $(document).ready(function(){
-        getLocation();
-    });
+        <p>We just need some info to get you started...</p>
+        <form onsubmit="submitPreferences();">
+            <div class="col-md-6">
+                <label for="nameInput">My name is...</label>
+                <input type="text" id="nameInput" name="nameInput"/>
+            </div>
+            <div class="col-md-6">
+                <label for="preferenceSliderInput">I'm normally hot or cold...?</label>
+                <input type="range" max="1" min="-1" value="0" name="preferenceSliderInput" id="preferenceSliderInput" />
+            </div>
+            <div class="col-md-10">
+                <input type="submit" />
+            </div>
+        </form>
+    </section>
+    <section id="weatherSection" class="col-md-10">
+        <h3 id="city"></h3>
+        <h3 id="temperature"></h3>
+        <h3 id="weather"></h3>
+    </section>
 
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            alert("Geolocation is not supported by this browser.");
-        }
-    }
-
-    function showPosition(position) {
-
-        $.ajax({
-            url: "http://api.openweathermap.org/data/2.5/weather?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&appid=8e62e050c29fc061b770beda0908a51c",
-            success: function(data) {
-                $("#city").text(data.name);
-                $("#temperature").text(Math.round(data.main.temp - 273) + " degrees C");
-                $("#weather").text(data.weather[0].main);
-            }
-        })
-    }
-
-
-    </script>
 
 
 </body>

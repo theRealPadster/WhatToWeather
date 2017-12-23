@@ -59,11 +59,12 @@ function showPosition(position) {
 function makeWeatherChunkElement(weatherItem, date) {
 
     var options = { month:'short', day: 'numeric', hour: 'numeric', minute:'numeric' };
+    var temperature = Math.round(weatherItem.main.temp);
 
-    var forecastChunk = "<div class='forecastChunk'></div>";
+    var forecastChunk = "<div class='forecastChunk " + getWeatherColour(temperature) + "'></div>";
     // var time = "<p class='time'>" + date.getHours() + ":" + date.getMinutes() + "</p>";
     var time = "<p class='time'>" + date.toLocaleString("en-US", options) + "</p>";
-    var temp = "<p class='temp'>" + Math.round(weatherItem.main.temp) + "</p>";
+    var temp = "<p class='temp'>" + temperature + "</p>";
     var weather = "<p class='weather'>" + weatherItem.weather[0].main + "</p>";
 
     var toAdd = $(forecastChunk)

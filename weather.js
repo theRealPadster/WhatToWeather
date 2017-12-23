@@ -27,3 +27,32 @@ function setBackground(temperature) {
         "background-color": colour
     });
 }
+
+//TODO - merge these somehow, like an object with ranges, with colours and things attached to each one...
+
+function getWeatherColour(temperature) {
+    var colour = "frigid";
+    if (temperature < -3) {
+        colour = "freezing";
+    }
+    else if (temperature < 3) {
+        colour = "colder";
+    }
+    else if (temperature < 14) {
+        colour = "cold";
+    }
+    else if (temperature < 19) {
+        colour = "cool";
+    }
+    else if (temperature < 23) {
+        colour = "warm";
+    }
+    else if (temperature < 30) {
+        colour = "hot";
+    }
+    else {
+        colour = "hotter";
+    }
+
+    return colour;
+}

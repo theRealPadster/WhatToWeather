@@ -5,3 +5,8 @@ body {
 .hidden {
     display: none;
 }
+
+.forecastChunk {
+    width: 12.5%;
+    float: left;
+}

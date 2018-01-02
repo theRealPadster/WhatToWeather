@@ -21,12 +21,15 @@ function showPosition(position) {
             var city = data.name;
             var temp = Math.round(data.main.temp);
             var weather = data.weather[0].description;
+            var options = { hour: 'numeric', minute:'numeric' };
+            var time = getDate(data).toLocaleString("en-US", options);
 
             $("#city").text(city);
+            $("#time").text(time);
             $("#temperature").text(temp + " degrees C");
             $("#weather").text(weather);
-            //TODO - have a local icon set to use...
-            $("#weatherIcon").append("<img id='weatherIcon' src='WeatherIcons/" + data.weather[0].icon + ".png'>");
+            $("#weatherIcon").append("<img id='weatherIcon' src='WeatherIcons/" + data.weather[0].icon + ".png'" +
+                " alt='" + weather + " icon' title='" + weather + "'>");
 
             setBackground(temp);
             
@@ -40,7 +43,6 @@ function showPosition(position) {
     $.ajax({
         url: "http://api.openweathermap.org/data/2.5/forecast?lat=" + position.coords.latitude + "&lon=" + position.coords.longitude + "&units=metric&appid=8e62e050c29fc061b770beda0908a51c",
         success: function(data) {
-            var now = new Date();
             //TODO - can I make "tomorrow" one line?
             var tomorrow = new Date();
             var span = 15;

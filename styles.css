@@ -1,13 +1,49 @@
+
+
 body {
     font-family: sans-serif;
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .col-xxs-12 {
+        width: 100% !important;
+    }
 }
 
 .hidden {
     display: none;
 }
 
+#weatherSection {
+    background-color: lightgoldenrodyellow;
+}
+
+#clothesSection {
+    background-color: orange;
+}
+
+#forecastSection {
+    background-color: red;
+    display: inline-block;
+}
+
+
+
 .forecastChunk {
-    width: 12.5%;
+    width: 20%;
+    /* padding-right: 0.5%; */
     float: left;
 
     /* TODO - add grunt/watch/less stuff here... */

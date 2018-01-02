@@ -25,7 +25,7 @@ function showPosition(position) {
             $("#temperature").text(temp + " degrees C");
             $("#weather").text(weather);
             //TODO - have a local icon set to use...
-            $("#weatherSection").append("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png'>");
+            $("#weatherIcon").append("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png'>");
 
             setBackground(temp);
         }
@@ -38,7 +38,10 @@ function showPosition(position) {
             var now = new Date();
             //TODO - can I make "tomorrow" one line?
             var tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
+            var span = 15;
+            //set it to show 15 hours (5 blocks)
+            // tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(tomorrow.getHours() + span);
 
             //TODO - this filters out so it shows a 24 hour period, tweak it. only show till end of day, or what?
             data.list.some(function (item) {
@@ -58,7 +61,7 @@ function showPosition(position) {
 
 function makeWeatherChunkElement(weatherItem, date) {
 
-    var options = { month:'short', day: 'numeric', hour: 'numeric', minute:'numeric' };
+    var options = { hour: 'numeric', minute:'numeric' };
     var temperature = Math.round(weatherItem.main.temp);
 
     var forecastChunk = "<div class='forecastChunk " + getWeatherColour(temperature) + "'></div>";

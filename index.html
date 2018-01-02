@@ -14,38 +14,51 @@
 </head>
 
 <body>
-    <h1>What to Weather</h1>
-
-    <section id="welcomeSection" class="col-md-10">
-        <h2>Welcome, <span id="nameSpan">friend</span> :)</h2>
-    </section>
-
-    <section id="preferenceSection" class="hidden col-md-10">
-
-        <p>We just need some info to get you started...</p>
-        <form onsubmit="submitPreferences();">
-            <div class="col-md-6">
-                <label for="nameInput">My name is...</label>
-                <input type="text" id="nameInput" name="nameInput"/>
+    <div class="container">
+        <h1>What to Weather</h1>
+        
+            <section id="welcomeSection" class="col-md-10">
+                <h2>Welcome, <span id="nameSpan">friend</span> :)</h2>
+            </section>
+        
+            <section id="preferenceSection" class="hidden col-md-10">
+        
+                <p>We just need some info to get you started...</p>
+                <form onsubmit="submitPreferences();">
+                    <div class="col-md-6">
+                        <label for="nameInput">My name is...</label>
+                        <input type="text" id="nameInput" name="nameInput"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="preferenceSliderInput">I'm normally hot or cold...?</label>
+                        <input type="range" max="1" min="-1" value="0" name="preferenceSliderInput" id="preferenceSliderInput" />
+                    </div>
+                    <div class="col-md-10">
+                        <input type="submit" />
+                    </div>
+                </form>
+            </section>
+            <section id="weatherSection" class="col-md-5">
+                <div class="row">
+                <div class="col-xs-6 col-xxs-12">
+                    <h3 id="city"></h3>
+                    <h3 id="temperature"></h3>
+                    <h3 id="weather"></h3>
+                </div>
+                <div id="weatherIcon" class="col-xs-6 col-xxs-12">
+                    <!-- the icon goes here -->
+                </div>
             </div>
-            <div class="col-md-6">
-                <label for="preferenceSliderInput">I'm normally hot or cold...?</label>
-                <input type="range" max="1" min="-1" value="0" name="preferenceSliderInput" id="preferenceSliderInput" />
-            </div>
-            <div class="col-md-10">
-                <input type="submit" />
-            </div>
-        </form>
-    </section>
-    <section id="weatherSection" class="col-md-10">
-        <h3 id="city"></h3>
-        <h3 id="temperature"></h3>
-        <h3 id="weather"></h3>
-    </section>
-    <section id="forecastSection" class="col-md-12">
-        <!-- empty by default, filled with weather forecast -->
-    </section>
-
+            </section>
+            <section id="clothesSection" class="col-md-7">
+                <p>You should wear:</p>
+            </section>
+            <section id="forecastSection" class="col-xs-12">
+                <!-- empty by default, filled with weather forecast -->
+            </section>
+        
+    </div>
+    
 
 
 </body>

@@ -26,7 +26,7 @@ function showPosition(position) {
             $("#temperature").text(temp + " degrees C");
             $("#weather").text(weather);
             //TODO - have a local icon set to use...
-            $("#weatherIcon").append("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png'>");
+            $("#weatherIcon").append("<img id='weatherIcon' src='WeatherIcons/" + data.weather[0].icon + ".png'>");
 
             setBackground(temp);
             

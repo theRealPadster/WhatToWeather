@@ -17,27 +17,28 @@
         <h1>What to Weather</h1>
         <h2>Welcome, friend :)</h2>
 
-        <section id="preferenceSection" class="col-xs-12">
-            <p>We just need some info to get you started...</p>
-            <form onsubmit="submitPreferences();" action="/">
-                <div class="col-xs-12">
-                    <label for="nameInput">My name is...</label>
-                    <input type="text" id="nameInput" name="nameInput"/>
+        <hr>
+
+        <p>We just need some info to get you started...</p>
+        <form onsubmit="submitPreferences();" action="/">
+            <section class="col-xs-12">
+                <label for="nameInput">My name is: </label>
+                <input type="text" id="nameInput" name="nameInput"/>
+            </section>
+            <section class="col-xs-12">
+                <label for="preferenceSliderInput">I'm normally hot or cold?</label>
+                <br>
+                <div class="prefSlider">
+                    <input type="range" max="5" min="-5" value="0" name="preferenceSliderInput" id="preferenceSliderInput" />
+                    <label class="float-left">Cold</label>
+                    <label class="float-right">Hot</label>
                 </div>
-                <div class="col-xs-12">
-                    <label for="preferenceSliderInput">I'm normally hot or cold...?</label>
-                    <br>
-                    <div class="prefSlider">
-                        <input type="range" max="5" min="-5" value="0" name="preferenceSliderInput" id="preferenceSliderInput" />
-                        <label class="float-left">Cold</label>
-                        <label class="float-right">Hot</label>
-                    </div>\
-                </div>
-                <div class="col-xs-12">
-                    <input type="submit" />
-                </div>
-            </form>
-        </section>
+            </section>
+            <section class="col-xs-12">
+                <input type="submit" />
+            </section>
+        </form>
+
     </div>
 
 </body>

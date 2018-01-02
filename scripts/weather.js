@@ -57,7 +57,7 @@ var weatherSchematics = {
         LegsGarment: "Pants",
         TorsoGarment: "Sweater",
         Shoes: "WinterBoots",
-        OuterWear: ["ParkaCoat", "WinterHat", "Gloves", "SnowPants"]
+        OuterWear: ["ThickWinterCoat", "WinterHat", "Gloves", "SnowPants"]
     },
     "Freezing": {
         LowerTempRange: -15,
@@ -66,7 +66,7 @@ var weatherSchematics = {
         LegsGarment: "Pants",
         TorsoGarment: "Sweater",
         Shoes: "WinterBoots",
-        OuterWear: ["ParkaCoat", "WinterHat", "FingerMitts"]
+        OuterWear: ["ThickWinterCoat", "WinterHat", "FingerMitts"]
     },
     "Cold": {
         LowerTempRange: -5,

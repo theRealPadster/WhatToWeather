@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    checkPreferencesSet();
+    $("#nameSpan").text(getCookie("name"));
+    getLocation();
 });
 
 function getLocation() {
@@ -28,6 +29,7 @@ function showPosition(position) {
             $("#weatherIcon").append("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png'>");
 
             setBackground(temp);
+            addClothingImages(getWeatherSchematicFromTemperature(temp));
         }
     });
 
@@ -78,25 +80,28 @@ function makeWeatherChunkElement(weatherItem, date) {
     return toAdd;
 }
 
-//TODO - validate, or parsley?
-function submitPreferences() {
+function addClothingImages(weatherSchematicObject) 
+{
+    var container = "<div id='clothingContainer'></div>"
+    var torsoGarment = "<img title='" + weatherSchematicObject.TorsoGarment + "' alt='" + 
+        weatherSchematicObject.TorsoGarment + "' src='ClothingImages/" + weatherSchematicObject.TorsoGarment + ".png'/>"
+    var legsGarment = "<img title='" + weatherSchematicObject.LegsGarment + "' alt='" + 
+        weatherSchematicObject.LegsGarment + "' src='ClothingImages/" + weatherSchematicObject.LegsGarment + ".png'/>"
+    var shoes = "<img title='" + weatherSchematicObject.Shoes + "' alt='" + 
+        weatherSchematicObject.Shoes + "' src='ClothingImages/" + weatherSchematicObject.Shoes + ".png'/>"
 
-    //TODO - don't set expiry...
+    var containerElement = $(container);
+    containerElement.append(torsoGarment);
+    containerElement.append(legsGarment);
+    containerElement.append(shoes);
 
-    var name = $("#nameInput").val();
-    var preferenceValue = $("#preferenceSliderInput").val();
+    //Get the OuterWear
+    $.each(weatherSchematicObject.OuterWear, function (key, clothingItem) {
+        var outerWear = "<img title='" + clothingItem + "' alt='" + 
+        clothingItem  + "' src='ClothingImages/" + clothingItem  + ".png'/>"
+        containerElement.append(outerWear);
+    });
 
-    setCookie("name", name, 7);
-    setCookie("preferenceValue", preferenceValue, 7);
 
-    setCookie("preferencesSet", true, 7);
-}
-
-function checkPreferencesSet() {
-    if (getCookie("preferencesSet") != "") {
-        $("#nameSpan").text(getCookie("name"));
-        getLocation();
-    } else {
-        $("#preferenceSection").removeClass("hidden");
-    }
+    $("#clothesSection").append(containerElement);
 }

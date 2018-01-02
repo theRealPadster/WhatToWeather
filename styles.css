@@ -4,16 +4,14 @@ body {
     font-family: sans-serif;
 }
 
-@media screen and (max-width: 1200px) {
-    .container {
-        max-width: 960px;
-    }
+section {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
 }
 
-@media screen and (min-width: 1201px) {
-    .container {
-        max-width: 1200px;
-    }
+.container {
+    margin-top: 30px;
+    background-color: rgba(255,255,255,0.4);
 }
 
 @media screen and (max-width: 480px) {
@@ -27,11 +25,11 @@ body {
 }
 
 #weatherSection {
-    background-color: lightgoldenrodyellow;
+    /* background-color: lightgoldenrodyellow; */
 }
 
 #clothesSection {
-    background-color: orange;
+    /* background-color: orange; */
 }
 
 #clothesSection img {
@@ -39,23 +37,39 @@ body {
 }
 
 #forecastSection {
-    background-color: red;
+    /* background-color: red; */
     display: inline-block;
+    border-top: 4px solid #333;
+    background-color: rgba(255,255,255,0.5);
 }
 
 .forecastChunk {
     width: 20%;
     /* padding-right: 0.5%; */
     float: left;
+    padding-top: 15px;
 
     /* TODO - add grunt/watch/less stuff here... */
 }
 
-.forecastChunk.frigid { background: linear-gradient(transparent, white); }
+/* .forecastChunk.frigid { background: linear-gradient(transparent, white); }
 .forecastChunk.freezing { background: linear-gradient(transparent, #cbe8ff); }
 .forecastChunk.colder { background: linear-gradient(transparent, #a5d8ff); }
 .forecastChunk.cold { background: linear-gradient(transparent, #a1e5fb); }
 .forecastChunk.cool { background: linear-gradient(transparent, #97ddff); }
 .forecastChunk.warm { background: linear-gradient(transparent, #55d8ff); }
 .forecastChunk.hot { background: linear-gradient(transparent, #fbefbf); }
-.forecastChunk.hotter { background: linear-gradient(transparent, #fba892); }
+.forecastChunk.hotter { background: linear-gradient(transparent, #fba892); } */
+
+.prefSlider {
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.centre { text-align: center; }
+.float-right { float: right; }
+.float-left { float: left; }
+
+footer {
+    margin-bottom: 15px;
+}

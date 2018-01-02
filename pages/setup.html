@@ -12,26 +12,28 @@
     <!-- TOODO - add loading/spash screen -->
 </head>
 
-<body>
-    <div class="container">
+<body style="background-color: #fcdda6;">
+    <div class="container centre">
         <h1>What to Weather</h1>
-        
-        <section id="welcomeSection" class="col-md-10">
-            <h2>Welcome, friend :)</h2>
-        </section>
-    
-        <section id="preferenceSection" class="col-md-10">
+        <h2>Welcome, friend :)</h2>
+
+        <section id="preferenceSection" class="col-xs-12">
             <p>We just need some info to get you started...</p>
             <form onsubmit="submitPreferences();" action="/">
-                <div class="col-md-6">
+                <div class="col-xs-12">
                     <label for="nameInput">My name is...</label>
                     <input type="text" id="nameInput" name="nameInput"/>
                 </div>
-                <div class="col-md-6">
+                <div class="col-xs-12">
                     <label for="preferenceSliderInput">I'm normally hot or cold...?</label>
-                    <input type="range" max="1" min="-1" value="0" name="preferenceSliderInput" id="preferenceSliderInput" />
+                    <br>
+                    <div class="prefSlider">
+                        <input type="range" max="5" min="-5" value="0" name="preferenceSliderInput" id="preferenceSliderInput" />
+                        <label class="float-left">Cold</label>
+                        <label class="float-right">Hot</label>
+                    </div>\
                 </div>
-                <div class="col-md-10">
+                <div class="col-xs-12">
                     <input type="submit" />
                 </div>
             </form>

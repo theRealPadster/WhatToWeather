@@ -5,13 +5,19 @@ $(document).ready(function(){
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition, showErrorMsg);
     } else {
-        alert("Geolocation is not supported by this browser.");
+        showErrorMsg();
     }
 }
 
+function showErrorMsg() {
+    $("#errorMsg").removeClass("hidden");
+}
+
 function showPosition(position) {
+
+    $(".container").removeClass("hidden");
 
     //call for current weather
     $.ajax({

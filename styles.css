@@ -34,12 +34,14 @@ body {
     background-color: orange;
 }
 
+#clothesSection img {
+    height: 118px;
+}
+
 #forecastSection {
     background-color: red;
     display: inline-block;
 }
-
-
 
 .forecastChunk {
     width: 20%;

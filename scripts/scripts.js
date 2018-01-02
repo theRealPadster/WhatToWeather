@@ -20,7 +20,7 @@ function showPosition(position) {
 
             var city = data.name;
             var temp = Math.round(data.main.temp);
-            var weather = data.weather[0].main;
+            var weather = data.weather[0].description;
 
             $("#city").text(city);
             $("#temperature").text(temp + " degrees C");
@@ -29,7 +29,10 @@ function showPosition(position) {
             $("#weatherIcon").append("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png'>");
 
             setBackground(temp);
-            addClothingImages(getWeatherSchematicFromTemperature(temp));
+            
+            var userPrefsOffset = parseInt(getCookie("preferenceValue"));
+            addClothingImages(getWeatherSchematicFromTemperature(temp + userPrefsOffset));
+            addAdditionalClothingItems(data.weather[0].main, temp);
         }
     });
 
@@ -104,4 +107,29 @@ function addClothingImages(weatherSchematicObject)
 
 
     $("#clothesSection").append(containerElement);
+}
+
+function addAdditionalClothingItems(weatherCondition, temp)
+{
+
+    //If it's raining, wear a rain jacket
+    if (weatherCondition == "Rain" || weatherCondition == "Thunderstorm" || weatherCondition == "Drizzle")
+    {
+        var rainCoat = "<img title='RainJacket' alt='Rainjacket' src='ClothingImages/RainJacket.png'/>"
+        $("#clothingContainer").append(rainCoat);
+
+        // if it's raining hard, bring an umbrella
+        if (weatherCondition == "Rain" || weatherCondition == "Thunderstorm")
+        {
+            var umbrella = "<img title='Umbrella' alt='Umbrella' src='ClothingImages/Umbrella.png'/>"
+            $("#clothingContainer").append(umbrella);
+        }
+        
+    }   
+    //If it's sunny and warm outside, wear a cap to protect yourself from the sun
+    if (weatherCondition == "Clear" && temp > 20)
+    {
+        var cap = "<img title='Cap' alt='Cap' src='ClothingImages/Cap.png'/>"
+        $("#clothingContainer").append(cap);
+    }
 }

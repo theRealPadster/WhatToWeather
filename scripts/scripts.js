@@ -21,6 +21,7 @@ function showPosition(position) {
             var city = data.name;
             var temp = Math.round(data.main.temp);
             var weather = data.weather[0].description;
+            weather = weather.charAt(0).toUpperCase() + weather.slice(1);
             var options = { hour: 'numeric', minute:'numeric' };
             var time = getDate(data).toLocaleString("en-US", options);
 
